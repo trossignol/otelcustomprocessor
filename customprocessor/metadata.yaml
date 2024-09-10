@@ -1,0 +1,8 @@
+type: custom_processor
+github_project: trossignol/otel-customprocessor
+
+status:
+  class: processor
+  stability:
+    beta: [traces]
+  distributions: [core, contrib]
