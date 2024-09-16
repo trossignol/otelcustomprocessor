@@ -3,9 +3,9 @@
 This project is an example of a custom OpenTelemetry processor. It demonstrates how to create a custom OpenTelemetry processor in Go and how to integrate it with the OpenTelemetry ecosystem. This processor is intended solely for demonstration purposes.
 
 In `src` directory, you can find 3 `go` files:
-* `config.go` used to specify the processor's configuration parameters
-* `factory.go` containing the instantiation of the processor
-* `processor.go` which is the "real" processor code (especially the `processTraces` method)
+- `config.go` used to specify the processor's configuration parameters
+- `factory.go` containing the instantiation of the processor
+- `processor.go` which is the "real" processor code (especially the `processTraces` method)
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ The result is an `otel-cujprocessor` binary available in the `dist` directory.
 
 ## Sources
 
-[OTEL - Building a connector](https://opentelemetry.io/docs/collector/building/connector/)
-[OTEL - Building a custom processor](https://opentelemetry.io/docs/collector/custom-collector/)
-[Collector module API](https://pkg.go.dev/go.opentelemetry.io/collector)
-[Extending the OpenTelemetry Collector with your own components](https://medium.com/opentelemetry/extending-the-opentelemetry-collector-with-your-own-components-64c10cf675db)
+- [OTEL - Building a connector](https://opentelemetry.io/docs/collector/building/connector/)
+- [OTEL - Building a custom processor](https://opentelemetry.io/docs/collector/custom-collector/)
+- [Collector module API](https://pkg.go.dev/go.opentelemetry.io/collector)
+- [Extending the OpenTelemetry Collector with your own components](https://medium.com/opentelemetry/extending-the-opentelemetry-collector-with-your-own-components-64c10cf675db)
