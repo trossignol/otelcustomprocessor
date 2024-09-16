@@ -15,9 +15,7 @@ const (
 	typeStr = "cujprocessor"
 )
 
-// NewFactory creates a factory for example connector.
 func NewFactory() processor.Factory {
-	// OpenTelemetry connector factory to make a factory for connectors
 	cType, err := component.NewType(typeStr)
 	if err != nil {
 		return nil
@@ -35,8 +33,6 @@ func createDefaultConfig() component.Config {
 	}
 }
 
-// createTracesToMetricsConnector defines the consumer type of the connector
-// We want to consume traces and export metrics, therefore, define nextConsumer as metrics, since consumer is the next component in the pipeline
 func createProcessor(ctx context.Context, set processor.Settings, cfg component.Config, nextConsumer consumer.Traces) (processor.Traces, error) {
 	c, err := newProcessor(set.Logger, cfg)
 	if err != nil {

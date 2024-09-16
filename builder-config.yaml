@@ -20,4 +20,4 @@ receivers:
 
 
 replaces:
-  - github.com/trossignol/otelcustomprocessor => ..
+  - github.com/trossignol/otelcustomprocessor => ../src
