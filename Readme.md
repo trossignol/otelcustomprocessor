@@ -41,3 +41,10 @@ make run
 ```
 
 The result is an `otel-cujprocessor` binary available in the `dist` directory.
+
+## Sources
+
+[OTEL - Building a connector](https://opentelemetry.io/docs/collector/building/connector/)
+[OTEL - Building a custom processor](https://opentelemetry.io/docs/collector/custom-collector/)
+[Collector module API](https://pkg.go.dev/go.opentelemetry.io/collector)
+[Extending the OpenTelemetry Collector with your own components](https://medium.com/opentelemetry/extending-the-opentelemetry-collector-with-your-own-components-64c10cf675db)
