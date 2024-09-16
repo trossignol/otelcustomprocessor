@@ -4,8 +4,9 @@ import (
 	"context"
 
 	"go.opentelemetry.io/collector/component"
-	"go.opentelemetry.io/collector/connector"
 	"go.opentelemetry.io/collector/consumer"
+	"go.opentelemetry.io/collector/processor"
+	"go.opentelemetry.io/collector/processor/processorhelper"
 )
 
 const (
@@ -15,18 +16,17 @@ const (
 )
 
 // NewFactory creates a factory for example connector.
-func NewFactory() connector.Factory {
+func NewFactory() processor.Factory {
 	// OpenTelemetry connector factory to make a factory for connectors
 	cType, err := component.NewType(typeStr)
 	if err != nil {
 		return nil
 	}
 
-	return connector.NewFactory(
+	return processor.NewFactory(
 		cType,
 		createDefaultConfig,
-		connector.WithTracesToTraces(createTracesToTracesConnector, component.StabilityLevelAlpha))
-	//connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
+		processor.WithTraces(createProcessor, component.StabilityLevelStable))
 }
 
 func createDefaultConfig() component.Config {
@@ -37,11 +37,10 @@ func createDefaultConfig() component.Config {
 
 // createTracesToMetricsConnector defines the consumer type of the connector
 // We want to consume traces and export metrics, therefore, define nextConsumer as metrics, since consumer is the next component in the pipeline
-func createTracesToTracesConnector(ctx context.Context, params connector.Settings, cfg component.Config, nextConsumer consumer.Traces) (connector.Traces, error) {
-	c, err := newConnector(params.Logger, cfg)
+func createProcessor(ctx context.Context, set processor.Settings, cfg component.Config, nextConsumer consumer.Traces) (processor.Traces, error) {
+	c, err := newProcessor(set.Logger, cfg)
 	if err != nil {
 		return nil, err
 	}
-	c.nextConsumer = nextConsumer
-	return c, nil
+	return processorhelper.NewTracesProcessor(ctx, set, cfg, nextConsumer, c.processTraces)
 }
